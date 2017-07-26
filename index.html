@@ -13,7 +13,7 @@
 
 	<div ng-controller="mushroomCtrl">
 	  <ul>
-	    <li ng-repeat="mushroom in mushrooms | filter: searchText | filter: edible"><h3>{{ mushroom.name }}</h3><p>{{ mushroom.description }}</p></li>
+	    <li ng-repeat="mushroom in mushrooms | filter: {description:searchText} | filter: edible"><h3>{{ mushroom.name }}</h3><p>{{ mushroom.description }}</p></li>
 	  </ul>
 	</div>
 

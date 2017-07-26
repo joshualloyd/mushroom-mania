@@ -7,8 +7,9 @@ mushroomApp.controller('mushroomCtrl', function($scope, $http, $q){
 	let getMushrooms = () => {
 		return $q((resolve, reject)=>{
 			$http
-				.get('mushrooms.json')
+				.get('https://mushrooms-87cf6.firebaseio.com/mushrooms.json')
 				.then((mushroomsData)=>{
+					// console.log('mushroomsData', mushroomsData);
 					resolve(mushroomsData);
 				})
 				.catch((err)=>{
@@ -19,9 +20,9 @@ mushroomApp.controller('mushroomCtrl', function($scope, $http, $q){
 
 	getMushrooms()
 	.then((mushroomsData)=>{
-		// console.log('mushroomsData', mushroomsData.data.mushrooms);
-		let mushroomsArr = Object.keys(mushroomsData.data.mushrooms).map((mushroom)=>{
-			let mushroomObj = mushroomsData.data.mushrooms[mushroom];
+		console.log('mushroomsData.data', mushroomsData.data);
+		let mushroomsArr = Object.keys(mushroomsData.data).map((mushroom)=>{
+			let mushroomObj = mushroomsData.data[mushroom];
 			return mushroomObj;
 		});
 		$scope.mushrooms = mushroomsArr;
