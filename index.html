@@ -13,8 +13,6 @@
 
 	<div ng-controller="mushroomCtrl">
 	  <ul>
-	 		<!-- Can't get filter to work with objects, mabye convert to array? -->
-	    <!-- <li ng-repeat="mushroom in mushrooms | filter: searchText">{{ mushroom.name }}</li> -->
 	    <li ng-repeat="mushroom in mushrooms | filter: searchText">{{ mushroom.name }}</li>
 	  </ul>
 	</div>
