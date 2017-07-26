@@ -21,14 +21,9 @@ mushroomApp.controller('mushroomCtrl', function($scope, $http, $q){
 	.then((mushroomsData)=>{
 		// console.log('mushroomsData', mushroomsData.data.mushrooms);
 		let mushroomsArr = Object.keys(mushroomsData.data.mushrooms).map((mushroom)=>{
-			let mushroomObj = {};
-			mushroomObj.name = mushroomsData.data.mushrooms[mushroom].name;
-			mushroomObj.edible = mushroomsData.data.mushrooms[mushroom].edible;
-			mushroomObj.description = mushroomsData.data.mushrooms[mushroom].description;
+			let mushroomObj = mushroomsData.data.mushrooms[mushroom];
 			return mushroomObj;
 		});
-		// console.log('mushroomsArr', mushroomsArr);
-		// $scope.mushrooms = mushroomsData.data.mushrooms;
 		$scope.mushrooms = mushroomsArr;
 	});
 
