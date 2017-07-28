@@ -2,8 +2,7 @@
 
 const mushroomApp = angular.module('app', []);
 
-mushroomApp.controller('mushroomCtrl', function($scope, $http, $q){
-
+mushroomApp.factory('MushroomFactory', function($http, $q){
 	let getMushrooms = () => {
 		return $q((resolve, reject)=>{
 			$http
@@ -17,8 +16,12 @@ mushroomApp.controller('mushroomCtrl', function($scope, $http, $q){
 				});
 		});
 	};
+	return {getMushrooms};
+});
 
-	getMushrooms()
+mushroomApp.controller('MushroomCtrl', function($scope, MushroomFactory){
+
+	MushroomFactory.getMushrooms()
 	.then((mushroomsData)=>{
 		console.log('mushroomsData.data', mushroomsData.data);
 		let mushroomsArr = Object.keys(mushroomsData.data).map((mushroom)=>{
